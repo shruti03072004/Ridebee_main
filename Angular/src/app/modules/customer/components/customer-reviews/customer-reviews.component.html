@@ -1,0 +1,74 @@
+<section class="reviews-section">
+
+  <div class="section-header">
+    <div class="title-line"></div>
+    <h2 class="section-title"><span>CLIENT</span> TESTIMONIALS</h2>
+    <div class="title-line"></div>
+  </div>
+
+  <div class="summary-bar">
+    <div class="stat-chip">
+      <span class="stat-num">4.8</span>
+      <span class="stat-label">AVG RATING</span>
+    </div>
+    <div class="stat-chip">
+      <span class="stat-num">1,200+</span>
+      <span class="stat-label">HAPPY CLIENTS</span>
+    </div>
+    <div class="stat-chip">
+      <span class="stat-num">98%</span>
+      <span class="stat-label">RECOMMEND</span>
+    </div>
+  </div>
+
+  <div class="carousel-wrapper">
+    <div class="carousel-track" [style.transform]="'translateX(-' + (current * 100) + '%)'">
+      <div class="review-card" *ngFor="let r of reviews">
+
+        <div class="card-glow"></div>
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <div class="review-top">
+          <div class="avatar">{{ r.initials }}</div>
+          <div>
+            <p class="reviewer-name">{{ r.name }}</p>
+            <p class="reviewer-meta">{{ r.meta }}</p>
+          </div>
+          <div class="rating-badge">{{ r.rating }}.0 ★</div>
+        </div>
+
+        <div class="stars">
+          <svg *ngFor="let filled of getStars(r.rating)" viewBox="0 0 20 20" class="star"
+            [style.fill]="filled ? '#E8720C' : '#333'">
+            <path d="M10 1l2.5 5.5H18l-4.5 4 1.7 6L10 13.5l-5.2 3 1.7-6L2 7.5h5.5z"/>
+          </svg>
+        </div>
+
+        <p class="review-quote">"{{ r.quote }}"</p>
+
+        <div class="card-footer">
+          <span class="review-car-badge">⚡ {{ r.badge }}</span>
+          <span class="verified">✔ VERIFIED</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-controls">
+    <button class="ctrl-btn" (click)="prev()">&#8592;</button>
+    <div class="dots">
+      <button
+        class="dot"
+        *ngFor="let r of reviews; let i = index"
+        [class.active]="i === current"
+        (click)="goTo(i)">
+      </button>
+    </div>
+    <button class="ctrl-btn" (click)="next()">&#8594;</button>
+  </div>
+
+</section>
