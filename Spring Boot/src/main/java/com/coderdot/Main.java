@@ -7,8 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 
 @SpringBootApplication
-@PropertyS
-ource("classpath:application.properties")  // 👈 add this
+@PropertySource("classpath:application.properties")  // 👈 add this
 
 public class Main {
 
